@@ -1,5 +1,6 @@
 package com.ar.movieapp.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.ar.movieapp.R;
+import com.ar.movieapp.helper.GlobalVariable;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -30,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements
     private String facebooId, facebookProfilePictureURL, facebookName;
 
     private CallbackManager callbackManager;
+    private Context context;
 
     @BindView(R.id.loginFacebook) LoginButton loginFacebook;
 
@@ -41,6 +44,8 @@ public class LoginActivity extends AppCompatActivity implements
 
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        context = getApplicationContext();
 
         loginFacebook.setReadPermissions(Arrays.asList("public_profile"));
 
@@ -59,6 +64,9 @@ public class LoginActivity extends AppCompatActivity implements
                 facebooId = loginResult.getAccessToken().getUserId();
                 facebookProfilePictureURL = "http://graph.facebook.com/" + facebooId + "/picture?type=large";
 
+                GlobalVariable.saveFBId(context, facebooId);
+                GlobalVariable.saveFBPP(context, facebookProfilePictureURL);
+
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
@@ -75,7 +83,11 @@ public class LoginActivity extends AppCompatActivity implements
                                     org.json.JSONObject raw = new org.json.JSONObject(rawContent);
                                     facebookName = raw.getString("name");
 
-                                    Toast.makeText(LoginActivity.this, "welcome " + facebookName, Toast.LENGTH_SHORT).show();
+                                    GlobalVariable.saveIsLogin(context, true);
+                                    GlobalVariable.saveFBName(context, facebookName);
+
+                                    goToMainActivity();
+                                    Toast.makeText(LoginActivity.this, "Selamat datang " + facebookName, Toast.LENGTH_SHORT).show();
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -101,6 +113,13 @@ public class LoginActivity extends AppCompatActivity implements
 
             }
         });
+    }
+
+    private void goToMainActivity(){
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("facebookName", facebookName);
+
+        startActivity(intent);
     }
 
     @Override
