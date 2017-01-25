@@ -105,11 +105,13 @@ public class LoginActivity extends AppCompatActivity implements
 
             @Override
             public void onCancel() {
+                Toast.makeText(context, "Login Facebook Cancel", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onError(FacebookException error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -117,9 +119,8 @@ public class LoginActivity extends AppCompatActivity implements
 
     private void goToMainActivity(){
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("facebookName", facebookName);
-
         startActivity(intent);
+        finish();
     }
 
     @Override

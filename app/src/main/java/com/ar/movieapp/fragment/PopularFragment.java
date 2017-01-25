@@ -1,18 +1,20 @@
 package com.ar.movieapp.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ar.movieapp.R;
+import com.ar.movieapp.activity.MovieDetailActivity;
 import com.ar.movieapp.adapter.MovieListAdapter;
 import com.ar.movieapp.model.movie_list.ModelMovieList;
 import com.ar.movieapp.model.movie_list.MovieListResult;
@@ -40,7 +42,7 @@ public class PopularFragment extends BaseFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         if (view == null){
             view = inflater.inflate(R.layout.fragment_list_movie, container, false);
@@ -56,6 +58,18 @@ public class PopularFragment extends BaseFragment {
         listMovie.setAdapter(adapter);
 
         getPopularMovie();
+
+        adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                MovieListResult movie = adapter.getData().get(i);
+
+                Intent intentToMovieDetail = new Intent(context, MovieDetailActivity.class);
+                intentToMovieDetail.putExtra("id", movie.getId());
+                startActivity(intentToMovieDetail);
+
+            }
+        });
 
         return view;
     }

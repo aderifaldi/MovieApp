@@ -32,6 +32,6 @@ public interface APIService {
     @GET(DETAIL_MOVIE)
     Call<ModelMovieDetail> detail(@Path("id") String id,
                                       @Query("api_key") String api_key,
-                                      @Query("language") int language);
+                                      @Query("language") String language);
 
 }

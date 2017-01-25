@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
@@ -9,40 +9,38 @@
     android:background="@color/colorWhite"
     tools:context="com.ar.movieapp.activity.MainActivity">
     <RelativeLayout
-        android:id="@+id/containerName"
+        android:padding="@dimen/activity_horizontal_margin"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:background="@color/colorPrimaryDark">
         <TextView
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:id="@+id/helloUser"
-            android:textSize="12sp"
             android:textColor="@color/colorWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!" />
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:text="Movie App" />
+
+        <TextView
+            android:id="@+id/helloUser"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_above="@id/containerName"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            app:tabMaxWidth="0dp"
-            app:tabMode="fixed"
-            style="@style/MyCustomTabLayout"/>
+        android:layout_height="48dp"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
+        style="@style/MyCustomTabLayout"/>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-</RelativeLayout>
+</LinearLayout>

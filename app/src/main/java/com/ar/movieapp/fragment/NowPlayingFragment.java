@@ -1,6 +1,7 @@
 package com.ar.movieapp.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,10 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ar.movieapp.R;
+import com.ar.movieapp.activity.MovieDetailActivity;
 import com.ar.movieapp.adapter.MovieListAdapter;
 import com.ar.movieapp.model.movie_list.ModelMovieList;
 import com.ar.movieapp.model.movie_list.MovieListResult;
@@ -54,12 +57,24 @@ public class NowPlayingFragment extends BaseFragment {
         listMovie.setLayoutManager(linearLayoutManager);
         listMovie.setAdapter(adapter);
 
-        getPopularMovie();
+        getNowPlayingMovie();
+
+        adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                MovieListResult movie = adapter.getData().get(i);
+
+                Intent intentToMovieDetail = new Intent(context, MovieDetailActivity.class);
+                intentToMovieDetail.putExtra("id", movie.getId());
+                startActivity(intentToMovieDetail);
+
+            }
+        });
 
         return view;
     }
 
-    private void getPopularMovie(){
+    private void getNowPlayingMovie(){
 
         Call<ModelMovieList> call = apiService.nowPlaying(APIKEY, LANGUAGE);
 

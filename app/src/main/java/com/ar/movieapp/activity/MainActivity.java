@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String PACKAGE_NAME = "com.ar.movieapp";
 
     private String facebookName;
-    private Intent intentGetData;
 
     private PagerAdapter adapter;
     private CharSequence pagerTitle[] = {"Popular ", "Now Playing"};
@@ -44,10 +43,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        intentGetData = getIntent();
         facebookName = GlobalVariable.getFBName(this);
 
-        helloUser.setText("Hello " + facebookName);
+        helloUser.setText(facebookName);
 
         numbOfTabs = pagerTitle.length;
         adapter = new PagerHomeAdapter(getSupportFragmentManager(), pagerTitle, numbOfTabs);
