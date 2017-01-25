@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         GlobalVariable.saveIsLogin(getApplicationContext(), false);
 
         Toast.makeText(getApplicationContext(),
-                "Logout " + GlobalVariable.getFBName(getApplicationContext()),
+                "Logout from " + GlobalVariable.getFBName(getApplicationContext()),
                 Toast.LENGTH_SHORT).show();
 
         startActivity(new Intent(context, LoginActivity.class)
