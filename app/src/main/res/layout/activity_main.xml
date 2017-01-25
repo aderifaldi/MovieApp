@@ -9,23 +9,24 @@
     android:background="@color/colorWhite"
     tools:context="com.ar.movieapp.activity.MainActivity">
     <RelativeLayout
-        android:padding="@dimen/activity_horizontal_margin"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/colorPrimaryDark">
         <TextView
+            android:id="@+id/logout"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:layout_alignParentRight="true"
             android:textColor="@color/colorWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:textSize="18sp"
-            android:text="Movie App" />
+            android:text="Logout" />
 
         <TextView
+            android:padding="@dimen/activity_horizontal_margin"
             android:id="@+id/helloUser"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:textColor="@color/colorWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

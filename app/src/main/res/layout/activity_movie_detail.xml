@@ -63,7 +63,7 @@
                 <ImageView
                     android:id="@+id/imgMovie"
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="320dp"
                     android:scaleType="centerCrop"/>
 
                 <LinearLayout

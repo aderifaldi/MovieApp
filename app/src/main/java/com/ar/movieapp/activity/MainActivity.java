@@ -1,5 +1,6 @@
 package com.ar.movieapp.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,22 +13,27 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ar.movieapp.R;
 import com.ar.movieapp.adapter.PagerHomeAdapter;
 import com.ar.movieapp.helper.GlobalVariable;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String PACKAGE_NAME = "com.ar.movieapp";
 
     private String facebookName;
+    private Context context;
 
     private PagerAdapter adapter;
     private CharSequence pagerTitle[] = {"Popular ", "Now Playing"};
@@ -40,12 +46,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
         facebookName = GlobalVariable.getFBName(this);
+        context = getApplicationContext();
 
-        helloUser.setText(facebookName);
+        helloUser.setText("Login as " + facebookName);
 
         numbOfTabs = pagerTitle.length;
         adapter = new PagerHomeAdapter(getSupportFragmentManager(), pagerTitle, numbOfTabs);
@@ -55,6 +65,20 @@ public class MainActivity extends AppCompatActivity {
 
         printFacebookKeyHash();
 
+    }
+
+    @OnClick(R.id.logout)
+    protected void logout(){
+        LoginManager.getInstance().logOut();
+        GlobalVariable.saveIsLogin(getApplicationContext(), false);
+
+        Toast.makeText(getApplicationContext(),
+                "Logout " + GlobalVariable.getFBName(getApplicationContext()),
+                Toast.LENGTH_SHORT).show();
+
+        startActivity(new Intent(context, LoginActivity.class)
+            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        finish();
     }
 
     private void printFacebookKeyHash(){

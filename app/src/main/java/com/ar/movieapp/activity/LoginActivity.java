@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements
                                     GlobalVariable.saveFBName(context, facebookName);
 
                                     goToMainActivity();
-                                    Toast.makeText(LoginActivity.this, "Selamat datang " + facebookName, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Welcome " + facebookName, Toast.LENGTH_SHORT).show();
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
