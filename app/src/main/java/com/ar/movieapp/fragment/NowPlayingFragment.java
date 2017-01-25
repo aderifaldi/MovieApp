@@ -3,7 +3,6 @@ package com.ar.movieapp.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,7 +26,7 @@ import retrofit2.Response;
  * Created by aderifaldi on 10-Nov-16.
  */
 
-public class PopularFragment extends BaseFragment {
+public class NowPlayingFragment extends BaseFragment {
 
     private View view;
     private LinearLayoutManager linearLayoutManager;
@@ -62,7 +61,7 @@ public class PopularFragment extends BaseFragment {
 
     private void getPopularMovie(){
 
-        Call<ModelMovieList> call = apiService.popular(APIKEY, LANGUAGE);
+        Call<ModelMovieList> call = apiService.nowPlaying(APIKEY, LANGUAGE);
 
         call.enqueue(new Callback<ModelMovieList>() {
             @Override

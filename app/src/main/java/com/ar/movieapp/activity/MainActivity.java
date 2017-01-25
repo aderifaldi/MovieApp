@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -11,6 +14,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.ar.movieapp.R;
+import com.ar.movieapp.adapter.PagerHomeAdapter;
+import com.ar.movieapp.helper.GlobalVariable;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -25,7 +30,13 @@ public class MainActivity extends AppCompatActivity {
     private String facebookName;
     private Intent intentGetData;
 
+    private PagerAdapter adapter;
+    private CharSequence pagerTitle[] = {"Popular ", "Now Playing"};
+    private int numbOfTabs;
+
     @BindView(R.id.helloUser) TextView helloUser;
+    @BindView(R.id.tabLayout) TabLayout tabLayout;
+    @BindView(R.id.viewPager) ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +45,15 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         intentGetData = getIntent();
-        facebookName = intentGetData.getStringExtra("facebookName");
+        facebookName = GlobalVariable.getFBName(this);
 
-        helloUser.setText("Halo " + facebookName);
+        helloUser.setText("Hello " + facebookName);
+
+        numbOfTabs = pagerTitle.length;
+        adapter = new PagerHomeAdapter(getSupportFragmentManager(), pagerTitle, numbOfTabs);
+
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
 
         printFacebookKeyHash();
 

@@ -40,6 +40,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     goToIntent = new Intent(context, LoginActivity.class);
                 }
                 startActivity(goToIntent);
+                finish();
 
             }
         }, SPLASH_TIME_OUT);
