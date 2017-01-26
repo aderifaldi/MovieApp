@@ -20,14 +20,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/movieTitle"
+                android:id="@+id/txtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
                 android:text="Title"/>
 
             <TextView
-                android:id="@+id/dateRelease"
+                android:id="@+id/txtDateRelease"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
@@ -35,7 +35,7 @@
 
             <TextView
                 android:layout_marginTop="8dp"
-                android:id="@+id/movieSummary"
+                android:id="@+id/txtSummary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="3"

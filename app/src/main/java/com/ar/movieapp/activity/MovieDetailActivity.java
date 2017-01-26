@@ -35,10 +35,10 @@ public class MovieDetailActivity extends BaseActivity {
     private SimpleDateFormat dateFormat;
     private Context context;
 
-    @BindView(R.id.progressLoading) ProgressBar progressLoading;
-    @BindView(R.id.movieTitle) TextView movieTitle;
-    @BindView(R.id.movieSummary) TextView movieSummary;
-    @BindView(R.id.dateRelease) TextView dateRelease;
+    @BindView(R.id.pbLoading) ProgressBar pbLoading;
+    @BindView(R.id.txtTitle) TextView txtTitle;
+    @BindView(R.id.txtSummary) TextView txtSummary;
+    @BindView(R.id.txtDateRelease) TextView txtDateRelease;
     @BindView(R.id.imgMovie) ImageView imgMovie;
 
     @Override
@@ -83,7 +83,7 @@ public class MovieDetailActivity extends BaseActivity {
         call.enqueue(new Callback<ModelMovieDetail>() {
             @Override
             public void onResponse(Call<ModelMovieDetail> call, Response<ModelMovieDetail> response) {
-                progressLoading.setVisibility(View.GONE);
+                pbLoading.setVisibility(View.GONE);
 
                 ModelMovieDetail data = response.body();
 
@@ -99,9 +99,9 @@ public class MovieDetailActivity extends BaseActivity {
                             .crossFade()
                             .into(imgMovie);
 
-                    dateRelease.setText(dateFormat.format(releaseDate));
-                    movieTitle.setText(title);
-                    movieSummary.setText(summary);
+                    txtDateRelease.setText(dateFormat.format(releaseDate));
+                    txtTitle.setText(title);
+                    txtSummary.setText(summary);
                 }else {
                     call.cancel();
                 }
@@ -110,7 +110,7 @@ public class MovieDetailActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<ModelMovieDetail> call, Throwable t) {
-                progressLoading.setVisibility(View.GONE);
+                pbLoading.setVisibility(View.GONE);
                 call.cancel();
             }
         });

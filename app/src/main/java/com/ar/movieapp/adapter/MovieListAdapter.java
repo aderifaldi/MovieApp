@@ -69,9 +69,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
                     .into(holder.imgMovie);
         }
 
-        holder.dateRelease.setText(dateFormat.format(movie.getRelease_date()));
-        holder.movieTitle.setText(movie.getTitle());
-        holder.movieSummary.setText(movie.getOverview());
+        holder.txtDateRelease.setText(dateFormat.format(movie.getRelease_date()));
+        holder.txtTitle.setText(movie.getTitle());
+        holder.txtSummary.setText(movie.getOverview());
 
     }
 
@@ -85,9 +85,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
         String movieImageUrl;
         long identity;
 
-        @BindView(R.id.movieTitle) TextView movieTitle;
-        @BindView(R.id.movieSummary) TextView movieSummary;
-        @BindView(R.id.dateRelease) TextView dateRelease;
+        @BindView(R.id.txtTitle) TextView txtTitle;
+        @BindView(R.id.txtSummary) TextView txtSummary;
+        @BindView(R.id.txtDateRelease) TextView txtDateRelease;
         @BindView(R.id.imgMovie) ImageView imgMovie;
 
         public MyViewHolder(View itemView) {

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ar.movieapp.R;
@@ -29,12 +31,17 @@ import butterknife.OnClick;
 public class LoginActivity extends AppCompatActivity implements
         ActivityCompat.OnRequestPermissionsResultCallback{
 
-    private String facebooId, facebookProfilePictureURL, facebookName;
+    private static final String USERNAME = "guest";
+    private static final String PASSWORD = "123456";
+
+    private String facebooId, facebookProfilePictureURL, facebookName, userName, userPassword;
 
     private CallbackManager callbackManager;
     private Context context;
 
-    @BindView(R.id.loginFacebook) LoginButton loginFacebook;
+    @BindView(R.id.btnLoginFacebook) LoginButton btnLoginFacebook;
+    @BindView(R.id.edtUserName) EditText edtUserName;
+    @BindView(R.id.edtPassword) EditText edtPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +54,33 @@ public class LoginActivity extends AppCompatActivity implements
 
         context = getApplicationContext();
 
-        loginFacebook.setReadPermissions(Arrays.asList("public_profile"));
+        btnLoginFacebook.setReadPermissions(Arrays.asList("public_profile"));
 
     }
 
-    @OnClick(R.id.loginFacebook)
+    @OnClick(R.id.btnLogin)
+    protected void login(){
+        userName = edtUserName.getText().toString();
+        userPassword = edtPassword.getText().toString();
+
+        if (!userName.equals(USERNAME)){
+            edtUserName.setError("Wrong Username!");
+        }else if (!userPassword.equals(PASSWORD)){
+            edtPassword.setError("Wrong Password");
+        }else {
+            GlobalVariable.saveFBName(context, "Guest");
+            goToMainActivity();
+        }
+
+    }
+
+    @OnClick(R.id.btnLoginFacebook)
     protected void loginFacebook(){
         registerFacebookCallback();
     }
 
     private void registerFacebookCallback(){
-        loginFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        btnLoginFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
 

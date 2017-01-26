@@ -38,7 +38,7 @@ public class NowPlayingFragment extends BaseFragment {
     private Context context;
 
     @BindView(R.id.listMovie) RecyclerView listMovie;
-    @BindView(R.id.progressLoading) ProgressBar progressLoading;
+    @BindView(R.id.pbLoading) ProgressBar progressLoading;
 
     @Nullable
     @Override

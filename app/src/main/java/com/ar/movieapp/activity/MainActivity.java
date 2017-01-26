@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private CharSequence pagerTitle[] = {"Popular ", "Now Playing"};
     private int numbOfTabs;
 
-    @BindView(R.id.helloUser) TextView helloUser;
+    @BindView(R.id.txtHelloUser) TextView txtHelloUser;
     @BindView(R.id.tabLayout) TabLayout tabLayout;
     @BindView(R.id.viewPager) ViewPager viewPager;
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         facebookName = GlobalVariable.getFBName(this);
         context = getApplicationContext();
 
-        helloUser.setText("Login as " + facebookName);
+        txtHelloUser.setText("Login as " + facebookName);
 
         numbOfTabs = pagerTitle.length;
         adapter = new PagerHomeAdapter(getSupportFragmentManager(), pagerTitle, numbOfTabs);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.logout)
+    @OnClick(R.id.btnLogout)
     protected void logout(){
         LoginManager.getInstance().logOut();
         GlobalVariable.saveIsLogin(getApplicationContext(), false);

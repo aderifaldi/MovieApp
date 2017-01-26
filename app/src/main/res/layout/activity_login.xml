@@ -12,7 +12,7 @@
     tools:context="com.ar.movieapp.activity.LoginActivity">
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/edtUserName"
         android:hint="Username"
         android:inputType="text"
         android:imeOptions="actionNext"
@@ -21,7 +21,7 @@
 
     <EditText
         android:layout_marginTop="8dp"
-        android:id="@+id/password"
+        android:id="@+id/edtPassword"
         android:hint="Password"
         android:inputType="textPassword"
         android:imeOptions="actionDone"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content" />
 
     <com.facebook.login.widget.LoginButton
-        android:id="@+id/loginFacebook"
+        android:id="@+id/btnLoginFacebook"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
