@@ -1,4 +1,4 @@
-package com.ar.movieapp.helper;
+package com.ar.movieapp.helper.sharedpreference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,14 +8,14 @@ import android.content.SharedPreferences;
  */
 public class GlobalVariable {
 
-    public static final String PREF_NAME = "MOVIE_APP_PREF";
+    private static final String PREF_NAME = "MOVIE_APP_PREF";
     private static final String IS_LOGIN = "isLogin";
     private static final String FACEBOOK_NAME = "facebookName";
     private static final String FACEBOOK_ID = "facebookId";
     private static final String FACEBOOK_PP = "facebookPP";
     private static final String FCM_TOKEN = "fcmToken";
-    public static final String NOTIFICATION_ID = "notificationId";
-    public static final String NOTIFICATION_REQUEST_CODE = "requestCode";
+    private static final String NOTIFICATION_ID = "notificationId";
+    private static final String NOTIFICATION_REQUEST_CODE = "requestCode";
 
     public static void saveFBName(Context context, String data){
         SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);

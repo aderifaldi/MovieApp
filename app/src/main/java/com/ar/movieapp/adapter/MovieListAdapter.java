@@ -69,7 +69,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
                     .into(holder.imgMovie);
         }
 
-        holder.txtDateRelease.setText(dateFormat.format(movie.getRelease_date()));
+        holder.txtDateRelease.setText(movie.getRelease_date());
         holder.txtTitle.setText(movie.getTitle());
         holder.txtSummary.setText(movie.getOverview());
 

@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.ar.movieapp.R;
 import com.ar.movieapp.adapter.PagerHomeAdapter;
-import com.ar.movieapp.helper.GlobalVariable;
+import com.ar.movieapp.helper.sharedpreference.GlobalVariable;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 

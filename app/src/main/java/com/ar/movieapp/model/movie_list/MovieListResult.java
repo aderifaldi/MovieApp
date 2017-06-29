@@ -11,7 +11,7 @@ public class MovieListResult implements Serializable {
 
     private String poster_path;
     private String overview;
-    private Date release_date;
+    private String release_date;
     private String id;
     private String title;
     private String backdrop_path;
@@ -25,7 +25,7 @@ public class MovieListResult implements Serializable {
         return overview;
     }
 
-    public Date getRelease_date() {
+    public String getRelease_date() {
         return release_date;
     }
 
@@ -43,5 +43,33 @@ public class MovieListResult implements Serializable {
 
     public String getVote_average() {
         return vote_average;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setBackdrop_path(String backdrop_path) {
+        this.backdrop_path = backdrop_path;
+    }
+
+    public void setVote_average(String vote_average) {
+        this.vote_average = vote_average;
     }
 }

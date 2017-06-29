@@ -14,7 +14,7 @@ public class ModelMovieDetail implements Serializable {
     private String id;
     private String overview;
     private String poster_path;
-    private Date release_date;
+    private String release_date;
     private String title;
     private String vote_average;
 
@@ -38,7 +38,7 @@ public class ModelMovieDetail implements Serializable {
         return poster_path;
     }
 
-    public Date getRelease_date() {
+    public String getRelease_date() {
         return release_date;
     }
 

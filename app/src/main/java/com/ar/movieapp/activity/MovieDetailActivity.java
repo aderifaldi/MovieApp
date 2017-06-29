@@ -29,10 +29,8 @@ public class MovieDetailActivity extends BaseActivity {
     private static final String PHOTO_PATH = "http://image.tmdb.org/t/p/w185/";
 
     private String id, title, summary, posterPath;
-    private Date releaseDate;
+    private String releaseDate;
     private Intent intentData;
-
-    private SimpleDateFormat dateFormat;
     private Context context;
 
     @BindView(R.id.pbLoading) ProgressBar pbLoading;
@@ -46,8 +44,6 @@ public class MovieDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
         ButterKnife.bind(this);
-
-        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         context = getApplicationContext();
 
         intentData = getIntent();
@@ -99,7 +95,7 @@ public class MovieDetailActivity extends BaseActivity {
                             .crossFade()
                             .into(imgMovie);
 
-                    txtDateRelease.setText(dateFormat.format(releaseDate));
+                    txtDateRelease.setText(releaseDate);
                     txtTitle.setText(title);
                     txtSummary.setText(summary);
                 }else {

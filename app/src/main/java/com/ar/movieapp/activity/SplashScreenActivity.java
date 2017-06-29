@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.ar.movieapp.R;
-import com.ar.movieapp.helper.GlobalVariable;
+import com.ar.movieapp.helper.sharedpreference.GlobalVariable;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
