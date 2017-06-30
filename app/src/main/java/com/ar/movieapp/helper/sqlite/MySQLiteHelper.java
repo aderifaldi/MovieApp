@@ -2,8 +2,11 @@ package com.ar.movieapp.helper.sqlite;
 
 import android.content.Context;
 
-import net.sqlcipher.database.SQLiteDatabase;
-import net.sqlcipher.database.SQLiteOpenHelper;
+//import net.sqlcipher.database.SQLiteDatabase;
+//import net.sqlcipher.database.SQLiteOpenHelper;
+
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by aderifaldi on 02/03/2016.
@@ -28,7 +31,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      */
     private static final String CREATE_TABLE_MOVIE = "CREATE TABLE if not EXISTS "
             + MOVIE + "("
-            + id +" text primary key autoincrement,"
+            + id +" text primary key,"
             + overview +" text,"
             + release_date +" text,"
             + poster_path +" text,"

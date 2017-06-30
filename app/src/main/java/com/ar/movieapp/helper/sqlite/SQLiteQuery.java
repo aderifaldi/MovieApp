@@ -6,9 +6,12 @@ import android.util.Log;
 
 import com.ar.movieapp.model.movie_list.MovieListResult;
 
-import net.sqlcipher.Cursor;
-import net.sqlcipher.SQLException;
-import net.sqlcipher.database.SQLiteDatabase;
+//import net.sqlcipher.Cursor;
+//import net.sqlcipher.SQLException;
+//import net.sqlcipher.database.SQLiteDatabase;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +29,8 @@ public class SQLiteQuery {
     }
 
     public void open() throws SQLException {
-        database = dbHelper.getWritableDatabase("moVieApp");
+//        database = dbHelper.getWritableDatabase("password");
+        database = dbHelper.getWritableDatabase();
     }
 
     public void close() {

@@ -20,8 +20,8 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp">
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_centerInParent="true"
                     android:src="@mipmap/ic_back"/>
             </RelativeLayout>
@@ -36,15 +36,39 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/btnShare"
             android:layout_alignParentRight="true"
-            android:layout_width="56dp"
+            android:layout_width="wrap_content"
             android:layout_height="56dp">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/ic_share"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/btnSave"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/save"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btnShare"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/ic_share"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
         </RelativeLayout>
     </RelativeLayout>
 

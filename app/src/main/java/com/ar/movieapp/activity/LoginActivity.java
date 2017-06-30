@@ -140,6 +140,7 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     private void goToMainActivity(){
+        GlobalVariable.saveIsLogin(getApplicationContext(), true);
         Intent intent = new Intent(context, MainActivity.class);
         startActivity(intent);
         finish();
