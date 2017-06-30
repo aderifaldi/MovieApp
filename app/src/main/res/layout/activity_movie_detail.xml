@@ -53,7 +53,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_centerInParent="true"
-                        android:src="@mipmap/save"/>
+                        android:src="@mipmap/star"/>
                 </RelativeLayout>
 
                 <RelativeLayout

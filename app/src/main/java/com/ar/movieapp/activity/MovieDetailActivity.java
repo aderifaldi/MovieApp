@@ -144,7 +144,7 @@ public class MovieDetailActivity extends BaseActivity {
             movie.setTitle(movieDetail.getTitle());
 
             sqLiteQuery.insertMovie(movie);
-            Toast.makeText(context, "Tersimpan!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Tersimpan ke Favorit!", Toast.LENGTH_SHORT).show();
 
         }else {
             Toast.makeText(context, "Sudah Tersimpan!", Toast.LENGTH_SHORT).show();

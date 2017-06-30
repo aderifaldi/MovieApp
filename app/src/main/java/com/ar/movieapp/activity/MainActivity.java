@@ -67,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @OnClick(R.id.btnFavorite)
+    protected void btnFavorite(){
+        startActivity(new Intent(getApplicationContext(), FavoriteMovieActivity.class));
+    }
+
     @OnClick(R.id.btnLogout)
     protected void logout(){
         LoginManager.getInstance().logOut();
